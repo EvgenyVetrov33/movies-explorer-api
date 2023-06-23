@@ -7,11 +7,21 @@ const { errors } = require('celebrate');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const handleErrors = require('./middlewares/error-handler');
-const corsOption = require('./middlewares/cors');
+// const corsOption = require('./middlewares/cors');
 
 const { PORT = 3000, MONGO_URL = 'mongodb://127.0.0.1/bitfilmsdb' } = process.env;
 
 const app = express();
+
+const corsOptions = {
+  origin: ['https://veter.movies.student.nomoredomains.rocks', 'http://localhost:3000'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // логгер запросов
 app.use(requestLogger);
