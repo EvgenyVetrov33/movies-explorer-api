@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   // Проверяем наличие и формат заголовка авторизации
-  if (!authorization || !authorization.startsWith('Bearer')) {
+  if (!authorization || !authorization.startsWith('Bearer ')) {
     return next(new AuthError('Необходима авторизация'));
   }
 
