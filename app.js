@@ -13,16 +13,16 @@ const { PORT = 3000, MONGO_URL = 'mongodb://127.0.0.1/bitfilmsdb' } = process.en
 
 const app = express();
 
-// const corsOptions = {
-//   origin: ['https://veter.movies.student.nomoredomains.rocks', 'http://localhost:3000'],
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204,
-//   allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
-app.use(cors());
+const corsOptions = {
+  origin: ['https://veter.movies.student.nomoredomains.rocks', 'http://localhost:3000'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 // логгер запросов
 app.use(requestLogger);
 
@@ -42,7 +42,7 @@ mongoose.connect(MONGO_URL, {
 });
 
 // cors запросы
-app.use(cors(corsOption));
+// app.use(cors(corsOption));
 
 // корневой роут
 app.use(router);
