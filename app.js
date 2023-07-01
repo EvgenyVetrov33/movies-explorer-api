@@ -34,7 +34,7 @@ mongoose.connect(MONGO_URL, {
 // cors запросы
 // app.use(cors(corsOption));
 const corsOptions = {
-  origin: ['https://veter.movies.student.nomoredomains.rocks', 'http://localhost:3000'],
+  origin: ['http://veter.movies.student.nomoredomains.rocks', 'https://veter.movies.student.nomoredomains.rocks', 'http://localhost:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   preflightContinue: false,
   optionsSuccessStatus: 204,
