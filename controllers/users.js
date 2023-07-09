@@ -74,9 +74,14 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
+const logout = (req, res) => {
+  res.localStorage.removeItem('jwt').send({ message: 'Выход выполнен' });
+};
+
 module.exports = {
   getUser,
   updateUser,
   createUser,
   login,
+  logout
 };
